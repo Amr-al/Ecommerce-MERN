@@ -1,0 +1,62 @@
+.ecommerce-productItem{
+    background-color: #f8faff;
+    margin: 3rem 0;
+    padding: 5rem;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.left-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.left-container img{
+    border-radius: 1.2rem;
+    margin-bottom: 2rem;
+    height: 80%;
+}
+
+.right-container{
+    display: flex;
+    flex-direction: column;
+}
+.prod-name{
+    font-weight: bold;
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    font-family: serif;
+}
+
+.prod-price{
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #707799;
+}
+
+.prod-brand{
+    text-transform: capitalize;
+}
+.prod-brand span,
+.prod-arrival{
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.prod-arrival{
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.prod-size{
+    background-color: white;
+    padding: 1.2rem 0.8rem;
+    border-radius: 50%;
+    font-weight: bold;
+    border: 1px solid #6610f2;
+}

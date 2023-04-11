@@ -7,6 +7,7 @@ import { ProductCard , Filter} from '../../components';
 
 
 import './catpage.css';
+import axios from 'axios';
 
 const settings = {
     
@@ -54,7 +55,7 @@ const settings = {
       
     };
 
-const CatPage = ({image,anwa3Lebs,products,pagee}) => {
+const CatPage = ({type, image,anwa3Lebs,pagee}) => {
 
   const price = useRef();
 
@@ -62,7 +63,7 @@ const CatPage = ({image,anwa3Lebs,products,pagee}) => {
   const data = ["Quick view" , "Add to Bag"];
 
   // My states ============================================ My states //
-
+        const [products , setProducts] = useState(null)
         const[filteredProducts,setFilteredProducts] = useState(products);
         const[filters,setFilters] = useState([]);
         const[category,setCategory] = useState(pagee);
@@ -80,9 +81,19 @@ const CatPage = ({image,anwa3Lebs,products,pagee}) => {
 
   // End of states ========================================= End of states //
 
+  
   useEffect(() => {
-    setFilteredProducts(products);
-  },[]);
+    const getProducts = async () => {
+      const res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
+      console.log(type);
+      let tmp = res.data.filter((product) => product.category === type)
+      setProducts( tmp);
+      console.log(tmp);
+    };
+
+
+    getProducts();
+  }, []);
 
   //filter products function
 
@@ -94,7 +105,8 @@ const CatPage = ({image,anwa3Lebs,products,pagee}) => {
     }
     if(mainFilters.category !== "All"){
       myFilteredProducts = myFilteredProducts.filter(product => 
-        mainFilters.category.toUpperCase() === product.section.name.toUpperCase());
+        
+        mainFilters.category === product.section);
     }
 
     setFilteredProducts(myFilteredProducts);
@@ -178,7 +190,7 @@ const CatPage = ({image,anwa3Lebs,products,pagee}) => {
       }
       filterProducts();
   }
-
+  if(!products) return <></>
   return (
     <div className='e-commerce-catpage'>
 

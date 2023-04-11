@@ -127,7 +127,12 @@ const NavbarC = () => {
             <Link to="/" className='navbar-logo'><img src={logo} alt="logo" /></Link>
             <div className="logos">
               <AiTwotoneHeart className="heart"/>
-              <Link to='/register'><BsPerson className='person'/></Link>
+              
+              <Link to={localStorage.getItem('auth')? '/profile': '/register'} style={{color:'unset'}}>
+                {
+                  <BsPerson className='person'/>
+                }
+              </Link>
               
               <AiOutlineShoppingCart className='cart'/>
             </div>

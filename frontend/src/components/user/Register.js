@@ -3,20 +3,23 @@ import Style from "./AuthStyle.module.css";
 import axios from "axios";
 
 function Register() {
-  let signup = async (e) => {
+  const signup = async (e) => {
     e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("name", e.target.name.value);
-    formdata.append("email", e.target.email.value);
-    formdata.append("password1", e.target.password1.value);
-    formdata.append("password2", e.target.password2.value);
-    formdata.append("pic", e.target.image.value);
-    console.log(formdata);
-    let response = await axios.post("http://127.0.0.1:8000/auth/signup", formdata, {
-      headers: {
-        "Content-Type": "multipart/form-data",
+
+    let response = await axios.post(
+      "https://cardigan-coypu.cyclic.app/auth/signup",
+      {
+        email: e.target.email.value,
+        name:e.target.name.value,
+        password:e.target.password1.value,
+        password2:e.target.password2.value
       },
-    });
+      {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
     response = await response.json();
     console.log(response);
     if (response.status == 200)
@@ -66,20 +69,20 @@ function Register() {
               required
             />
           </div>
-          <div className="form-group mt-3">
-            <label>Upload Photo</label>
-            <input
-              type="file"
-              name="image"
-              placeholder="Enter image"
-              required
-            />
-          </div>
+          
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
           </div>
+          <p
+            className="forgot-password text-center mt-2"
+            style={{ paddingTop: "10px" }}
+          >
+            <b>
+              <a href="/signin">login?</a>
+            </b>
+          </p>
         </div>
       </form>
     </div>

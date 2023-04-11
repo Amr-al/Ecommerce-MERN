@@ -8,15 +8,20 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Signin from './components/user/Signin';
 import Register from './components/user/Register';
 import Profile from './components/user/Profile';
+import ProductItem from './components/product/ProductItem';
+import axios from 'axios';
 
 
 function App() {
   const[products,setProducts] = useState([]);
+  
   useEffect(() => {
-    const getProducts = async () => {
-      const res = await fetch(`http://127.0.0.1:8000/products/`);
-      setProducts(await res.json());
+    let getProducts = async () => {
+      const res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
+      setProducts( res.data);
+      console.log(res.data);
     };
+
 
     getProducts();
   }, []);
@@ -29,14 +34,14 @@ function App() {
        <Routes>
 
           <Route exact path="/"  element={<Home products={products}/>}/>
-          <Route path="/men"  element={<Men products={products}/>}/>
+          <Route path="/men"  element={<Men />}/>
           <Route path="/profile"  element={<Profile/>}/> 
           <Route path="/signin"  element={<Signin/>}/> 
           <Route path="/register"  element={<Register/>}/> 
           <Route path="/women"  element={<Women products={products}/>}/>   
           <Route path="/accessories"  element={<Accessories products={products}/>}/> 
           <Route path="/collections"  element={<Collection products={products}/>}/> 
-          <Route path="/:piece"  element={<Collection products={products}/>}/> 
+          <Route path="/:piece"  element={<ProductItem/>}/> 
         </Routes>
 
         <Footer />
