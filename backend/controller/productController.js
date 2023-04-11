@@ -25,6 +25,8 @@ const addProduct = async (req, res) => {
     featured: featured,
     sizes: sizes,
     brand: brand,
+    category:req.body.category,
+    section:req.body.section
   });
   return res.status(200).json("produst is added");
 };
