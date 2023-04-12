@@ -4,11 +4,11 @@ import accessimg from '../../assests/acesspage.jpg';
 
 const Accessories = ({products}) => {
   const data = ["All","Hats","Bags","Belts"];
-  let accessProducts = products.filter((product) => product.Category?.name === "accessories");
+  //let accessProducts = products.filter((product) => product.Category?.name === "accessories");
 
   return (
     <div>
-      <CatPage image={accessimg} anwa3Lebs={data} products={accessProducts} pagee='Acessories'/>
+      <CatPage image={accessimg} anwa3Lebs={data} pagee='Accessories'/>
     </div>
   )
 }

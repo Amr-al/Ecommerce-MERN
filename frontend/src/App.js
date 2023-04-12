@@ -18,7 +18,7 @@ function App() {
   useEffect(() => {
     let getProducts = async () => {
       const res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
-      setProducts( res.data);
+      setProducts(res.data);
       console.log(res.data);
     };
 
@@ -38,10 +38,10 @@ function App() {
           <Route path="/profile"  element={<Profile/>}/> 
           <Route path="/signin"  element={<Signin/>}/> 
           <Route path="/register"  element={<Register/>}/> 
-          <Route path="/women"  element={<Women products={products}/>}/>   
-          <Route path="/accessories"  element={<Accessories products={products}/>}/> 
-          <Route path="/collections"  element={<Collection products={products}/>}/> 
-          <Route path="/:piece"  element={<ProductItem/>}/> 
+          <Route path="/women"  element={<Women />}/>   
+          <Route path="/accessories"  element={<Accessories />}/> 
+          <Route path="/collections"  element={<Collection />}/> 
+          <Route path="/:_id"  element={<ProductItem />}/> 
         </Routes>
 
         <Footer />

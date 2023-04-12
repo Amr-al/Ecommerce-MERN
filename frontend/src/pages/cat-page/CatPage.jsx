@@ -55,12 +55,12 @@ const settings = {
       
     };
 
-const CatPage = ({type, image,anwa3Lebs,pagee}) => {
+const CatPage = ({image,anwa3Lebs,pagee}) => {
 
   const price = useRef();
 
 
-  const data = ["Quick view" , "Add to Bag"];
+  const data = ["Quick view" , "More Details"];
 
   // My states ============================================ My states //
         const [products , setProducts] = useState(null)
@@ -70,7 +70,7 @@ const CatPage = ({type, image,anwa3Lebs,pagee}) => {
         const[mainFilters,setMainFilters] = useState({
           brand:[],
           size:[],
-          category:"",
+          category:"All",
           price:Infinity
         })
 
@@ -85,9 +85,9 @@ const CatPage = ({type, image,anwa3Lebs,pagee}) => {
   useEffect(() => {
     const getProducts = async () => {
       const res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
-      console.log(type);
-      let tmp = res.data.filter((product) => product.category === type)
-      setProducts( tmp);
+      let tmp = res.data.filter((product) => product.category === pagee)
+      setProducts(tmp);
+      setFilteredProducts(tmp);
       console.log(tmp);
     };
 
@@ -98,17 +98,25 @@ const CatPage = ({type, image,anwa3Lebs,pagee}) => {
   //filter products function
 
   const filterProducts = () => {
-    let myFilteredProducts = products.filter(product => product.price <= mainFilters.price)
+    let myFilteredProducts = products;// = products.filter(product => product.price <= mainFilters.price)
     
     if(mainFilters.brand.length){
+      //console.log(mainFilters.brand.includes(products[0].brand));
       myFilteredProducts = myFilteredProducts.filter(product => mainFilters.brand.includes(product.brand));
+      console.log(myFilteredProducts);
+    }
+    if(mainFilters.size.length){
+      //console.log(mainFilters.brand.includes(products[0].brand));
+      myFilteredProducts = myFilteredProducts.filter(product => mainFilters.size.some(item => product.sizes.includes(item)));
+      console.log(myFilteredProducts);
     }
     if(mainFilters.category !== "All"){
+      console.log("noooooo")
       myFilteredProducts = myFilteredProducts.filter(product => 
         
-        mainFilters.category === product.section);
+        mainFilters.category.toUpperCase() === product.section.toUpperCase());
     }
-
+    console.log(myFilteredProducts); 
     setFilteredProducts(myFilteredProducts);
   }
   
@@ -130,7 +138,7 @@ const CatPage = ({type, image,anwa3Lebs,pagee}) => {
 
         if(type === "brand"){
           if (mainFilters.brand.includes(item)) {
-            mainFilters.brand = mainFilters.brand.filter((i) => i !== item);
+             mainFilters.brand = mainFilters.brand.filter((i) => i !== item);
   
             } else {
               mainFilters.brand = [...mainFilters.brand, item];
@@ -144,10 +152,9 @@ const CatPage = ({type, image,anwa3Lebs,pagee}) => {
               mainFilters.size = [...mainFilters.size, item];
             }
         }
-
-        filterProducts();
         console.log(mainFilters.brand);
         console.log(mainFilters.size);
+        filterProducts();   
   }
 
 
@@ -255,7 +262,7 @@ const CatPage = ({type, image,anwa3Lebs,pagee}) => {
                 {filteredProducts.length ? filteredProducts.map((product) => 
                    <div id="prod-itm" key={product.id}>
                    <ProductCard imageUrl={product.image} data={data} 
-                   prodName={product.name} prodPrice={product.price}/>
+                   prodName={product.name} prodPrice={product.price} prodId={product._id}/>
                   </div>):
                   <div>Nothing to show</div>
                 }

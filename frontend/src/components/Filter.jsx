@@ -25,9 +25,19 @@ const Filter = ({brand,setBrand,size,setSize,price,handleFilters,handlePriceFilt
                             <label for="nike">Nike</label>
                         </div>
                         <div className="brand-checkbox">
-                            <input type="checkbox" id="candle" name="candle" value="candle"
+                            <input type="checkbox" id="Zara" name="Zara" value="Zara"
                             onChange={(e) => handleFilters(e,"brand")} />
-                            <label for="candle">Candle</label>
+                            <label for="Zara">Zara</label>
+                        </div>
+                        <div className="brand-checkbox">
+                            <input type="checkbox" id="Breshka" name="Breshka" value="Breshka"
+                            onChange={(e) => handleFilters(e,"brand")} />
+                            <label for="Breshka">Breshka</label>
+                        </div>
+                        <div className="brand-checkbox">
+                            <input type="checkbox" id="H&M" name="H&M" value="H&M"
+                            onChange={(e) => handleFilters(e,"brand")} />
+                            <label for="H&M">H&M</label>
                         </div>
                     
                     </div>}
@@ -52,6 +62,11 @@ const Filter = ({brand,setBrand,size,setSize,price,handleFilters,handlePriceFilt
                             <input type="checkbox" id="large" name="large" value="large"
                             onChange={(e) => handleFilters(e,"size")} />
                             <label for="large">Large</label>
+                        </div>
+                        <div className="brand-checkbox">
+                            <input type="checkbox" id="xl" name="xl" value="xl"
+                            onChange={(e) => handleFilters(e,"size")} />
+                            <label for="xl">Xl</label>
                         </div>
                     
                     </div>}

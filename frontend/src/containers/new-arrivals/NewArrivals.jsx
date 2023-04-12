@@ -77,8 +77,8 @@ const NewArrivals = ({products}) => {
           <Slider {...settings}>
             {
               products.map((product) => (product.newArrival === true && 
-              <ProductCard key={product.id} imageUrl={product.image} data={data} 
-                           prodName={product.name} prodPrice={product.price}
+              <ProductCard key={product._id} imageUrl={product.image} data={data} 
+                           prodName={product.name} prodPrice={product.price} prodId={product._id}
               />))
             }
           </Slider>
