@@ -1,126 +1,143 @@
-.e-commerce-navbar{
-    width: 100%;
+.e-commerce-navbar {
+  width: 100%;
 }
 
-.navbar-logo-conatiner{
-    display: flex;
-    justify-content: space-between;
+.navbar-logo-conatiner {
+  display: flex;
+  justify-content: space-between;
 }
 
-.navbar-form{
-    border: 1px solid #e3ecfc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5rem;
-    height: 2rem;
-    padding: 1rem 1rem;
-    background: #f8faff;
+.navbar-form {
+  border: 1px solid #e3ecfc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5rem;
+  height: 2rem;
+  padding: 1rem 1rem;
+  background: #f8faff;
 }
 
-.navbar-searchbar{
-    outline: none;
-    border: none;
-    background: #f8faff;
+.navbar-searchbar {
+  outline: none;
+  border: none;
+  background: #f8faff;
 }
 
-.e-commerce-navbar-menu{
-    display: none;
-    position: relative;   
+.e-commerce-navbar-menu {
+  display: none;
+  position: relative;
 }
 
-.navbar-logo{
-    margin-right: 6rem;
+.navbar-logo {
+  margin-right: 6rem;
 }
 
 .heart,
 .cart,
-.person{
-    width: 2rem;
-    height: 1.5rem;
-    cursor: pointer;
+.person {
+  width: 2rem;
+  height: 1.5rem;
+  cursor: pointer;
 }
 
-.person{
-    margin: 0 0.5rem;
+.person {
+  margin: 0 0.5rem;
 }
 
-.navbar-navitems{
+.navbar-navitems {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-item {
+  margin: 1rem;
+  color: black;
+  font-family: poppins, Arial, Helvetica, sans-serif;
+  line-height: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  color: unset;
+}
+
+.nav-item:hover {
+  color: #5d5fef;
+}
+
+.e-commerce-navbar-menu-container {
+  display: flex;
+  width: fit-content;
+  height: 100%;
+  margin: 0;
+  flex-direction: column;
+  min-width: 210px;
+  margin-top: 1rem;
+  padding: 2rem;
+  background-color: #eee;
+  border-radius: 5px;
+  box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
+}
+
+.dropdown a {
+  text-decoration: none;
+  color: unset;
+}
+
+@media screen and (max-width: 991px) {
+  .navbar-form {
+    display: none;
+  }
+  .heart {
+    display: none;
+  }
+  .e-commerce-navbar-menu {
     display: flex;
-    justify-content: center;
+  }
+  .navbar-navitems {
+    display: none;
+  }
+  .navbar-logo {
+    margin-right: 0;
+  }
+  .navbar-logo img {
+    width: 7rem;
+    height: 3rem;
+  }
 }
 
-.nav-item{
-    margin: 1rem;
-    color: black;
-    font-family: poppins,Arial,Helvetica,sans-serif;
-    line-height: 14px;
-    font-weight: 700;
-    text-decoration: none;
-    color: unset;
+@media screen and (max-width: 650px) {
+  .navbar-logo {
+    margin-left: 2rem;
+  }
+  .navbar-logo img {
+    height: 3rem;
+    align-self: flex-end;
+  }
 }
 
-.nav-item:hover{
-    color: #5d5fef;
+@media screen and (max-width: 320px) {
+  .cart {
+    display: none;
+  }
+}
+.dropdown {
+  position: relative;
+  display: inline-block;
 }
 
-.e-commerce-navbar-menu-container{
-    display: flex;
-    width: fit-content;
-    height: 100%;
-    margin: 0;
-    flex-direction: column;
-    min-width: 210px;
-    margin-top: 1rem;
-    padding: 2rem;
-    background-color: #eee;
-    border-radius: 5px;
-    box-shadow: 0 0 5 rgba(0, 0, 0, 0.2);
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  padding: 12px 16px;
+  z-index: 1;
 }
 
-.dropdown a{
-    text-decoration: none;
-    color: unset;
+.dropdown:hover .dropdown-content {
+  display: block;
 }
-
-@media screen and (max-width:991px){
-    .navbar-form{
-        display: none;
-    }
-    .heart{
-        display: none;
-    }
-    .e-commerce-navbar-menu{
-        display: flex;
-    }
-    .navbar-navitems{
-        display: none;
-    }
-    .navbar-logo{
-        margin-right: 0;
-    }
-    .navbar-logo img{
-        width:7rem;
-        height: 3rem;
-    }
-}
-
-@media screen and (max-width:650px){
-    .navbar-logo{
-        margin-left: 2rem;
-    }
-    .navbar-logo img{
-        height: 3rem;
-        align-self: flex-end;
-    }
-}
-
-@media screen and (max-width:320px){
-    .cart{
-        display: none;
-    }
-}
-
 
 /*
 

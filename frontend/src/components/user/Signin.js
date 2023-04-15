@@ -23,12 +23,12 @@ function Signin() {
         },
       }
     );
-    console.log(res);
+   // console.log(res);
     if(res.status == 200){
       localStorage.setItem('auth', res.data.token);
       navigate('/')
     }else{
-      console.log(res.data);
+ //     console.log(res.data);
       window.location.reload()
     }
   };

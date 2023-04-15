@@ -130,12 +130,21 @@ const NavbarC = () => {
             
             <Link to="/" className='navbar-logo'><img src={logo} alt="logo" /></Link>
             <div className="logos">
-              <AiTwotoneHeart className="heart"/>
-              <Link to={localStorage.getItem('auth')? '/profile': '/register'} style={{color:'unset'}}>
+            <AiTwotoneHeart className="heart"/>
+              
                 {
-                  <BsPerson className='person'/>
+                   localStorage.getItem('auth') ?
+                   <NavDropdown title={<BsPerson className='person'/> } className='dropdown'>
+                   <NavDropdown.Item><div onClick={()=>window.location.replace('/profile')}>profile</div></NavDropdown.Item>
+                   <NavDropdown.Item><div onClick={logout}>logout</div></NavDropdown.Item>
+               </NavDropdown>
+                  :<Link to={localStorage.getItem('auth')? '/profile': '/register'} style={{color:'unset'}}>
+                  {
+                    <BsPerson className='person'/>
+                  }
+                </Link> 
                 }
-              </Link>
+                
               
               <AiOutlineShoppingCart className='cart'/>
             </div>

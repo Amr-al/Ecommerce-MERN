@@ -19,13 +19,13 @@ function App() {
     let getProducts = async () => {
       const res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
       setProducts(res.data);
-      console.log(res.data);
+  //    console.log(res.data);
     };
 
 
     getProducts();
   }, []);
-  console.log(products);
+//  console.log(products);
 
   return (
     <div className="App" style={{width:'100%'}}>
