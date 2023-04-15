@@ -31,7 +31,7 @@ const getData = async () => {
 
       <div className="right-container">
         <p className='prod-name'>{prod3.name}</p>
-        <p className='prod-price'>240$</p>
+        <p className='prod-price'>{prod3.price}$</p>
         <p className="prod-brand">
           <span>Brand:</span> {prod3.brand}
         </p>

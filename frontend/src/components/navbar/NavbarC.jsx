@@ -41,11 +41,11 @@ const Menu = ({changeState1,nav1,changeState2,nav2,changeState3,nav3,changeState
         {nav3 && <MenuCard imageUrl={access} idd='accessesories'/> }
       </div>
 
-      <div className="menu-hovered">
+      {/* <div className="menu-hovered">
         <p><Link to="/collections" className='nav-item' id='collection-item' 
         onMouseEnter={() => changeState4(true)} onMouseLeave={() => changeState4(false)}>Collection</Link></p>
         {nav4 && <MenuCard imageUrl={collect} idd='collections'/>}
-      </div>
+      </div> */}
       
     </>
   )
@@ -170,11 +170,11 @@ const NavbarC = () => {
                       <NavDropdown.Item><Link to='/accessories/casual'>Casual</Link></NavDropdown.Item>
                       <NavDropdown.Item><Link to='/accessories/pajamas'>Pajamas</Link></NavDropdown.Item>
                   </NavDropdown>
-                  <NavDropdown title={<Link to='/collection'>Collection</Link>} className='dropdown'>
+                  {/* <NavDropdown title={<Link to='/collection'>Collection</Link>} className='dropdown'>
                       <NavDropdown.Item><Link to='/collection/dressy'>Dressy</Link></NavDropdown.Item>
                       <NavDropdown.Item><Link to='/collection/casual'>Casual</Link></NavDropdown.Item>
                       <NavDropdown.Item><Link to='/collection/pajamas'>Pajamas</Link></NavDropdown.Item>
-                  </NavDropdown>
+                  </NavDropdown> */}
               </div>
             }
           </div>

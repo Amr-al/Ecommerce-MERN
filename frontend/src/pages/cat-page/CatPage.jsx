@@ -98,7 +98,7 @@ const CatPage = ({image,anwa3Lebs,pagee}) => {
   //filter products function
 
   const filterProducts = () => {
-    let myFilteredProducts = products;// = products.filter(product => product.price <= mainFilters.price)
+    let myFilteredProducts = products.filter(product => product.price <= mainFilters.price)
     
     if(mainFilters.brand.length){
       //console.log(mainFilters.brand.includes(products[0].brand));
