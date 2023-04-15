@@ -107,6 +107,10 @@ const NavbarC = () => {
     </Container>
         </Navbar> */}
         const[toggleMenu,setToggleMenu] = useState(false);
+        const logout = ()=>{
+          localStorage.removeItem('auth')
+          window.location.reload()
+        }
 
   return (
       <div className="e-commerce_navbar section__padding ">
@@ -127,7 +131,6 @@ const NavbarC = () => {
             <Link to="/" className='navbar-logo'><img src={logo} alt="logo" /></Link>
             <div className="logos">
               <AiTwotoneHeart className="heart"/>
-              
               <Link to={localStorage.getItem('auth')? '/profile': '/register'} style={{color:'unset'}}>
                 {
                   <BsPerson className='person'/>

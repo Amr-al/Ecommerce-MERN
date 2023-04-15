@@ -21,6 +21,7 @@ const addProduct = async (req, res) => {
   await Product.create({
     name: name,
     image: result.url,
+    price: req.body.price,
     newArrival: newArrival,
     featured: featured,
     sizes: sizes,

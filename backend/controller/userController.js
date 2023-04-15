@@ -62,23 +62,47 @@ const signIn = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  let user = await User.findById(req.body.id);
-  let pic = req.file ? req.file.filename : user.pic;
-  if (req.file) {
-    const result = await cloudinary.uploader.upload(req.file.path, {
-      folder: "products",
-    });
-    pic = result.url;
-  }
+ // console.log(req.body);
+
+  let user = await User.findById(req.body.id),
+    temp ;
   if (req.body.password != req.body.password2)
-    return res.status(400).json("passwords are not the same");
-  let data = {
+    return res.status(500).json("passwords are not the same");
+  let data;
+  if (req.body.password != req.body.password2) {
+    return res.status(500).json("passwords must be equal");
+  }
+  if (req.body.password != "***********") {
+    data = {
+      name: req.body.name || user.name,
+      password: req.body.password,
+    };
+
+    bcrypt.hash(req.body.password, 10).then(async (hashed) => {
+      try {
+        temp = await User.findByIdAndUpdate(req.body.id, {
+          name: req.body.name || user.name,
+          password: hashed,
+        });
+      } catch {
+        return res.status(500).json("Please enter all required fields");
+      }
+    });
+  } else {
+    data = {
+      name: req.body.name || user.name,
+    };
+    temp = await User.findByIdAndUpdate(req.body.id, data);
+  }
+  data = {
+    _id: req.body.id,
     name: req.body.name || user.name,
-    password: req.body.password || user.password,
-    pic: pic,
+    email: req.body.email,
   };
-  let temp = await User.findByIdAndUpdate(req.body.id, data);
-  return res.status(200).json(temp);
+  const token = jwt.sign(data, "HS256", {
+    expiresIn: "24h",
+  });
+  return res.status(200).json({ token: token });
 };
 
 module.exports = { signIn, signUp, update };
