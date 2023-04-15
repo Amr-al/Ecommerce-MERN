@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Style from "./AuthStyle.module.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -32,6 +32,10 @@ function Signin() {
       window.location.reload()
     }
   };
+  useEffect(()=>{
+    if(localStorage.getItem('auth'))
+    navigate('/profile')
+  },[])
   return (
     <div className={Style.Auth_form_container}>
       <form className={Style.Auth_form} onSubmit={Sign}>

@@ -1,8 +1,11 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Style from "./AuthStyle.module.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate = useNavigate();
+
   const signup = async (e) => {
     e.preventDefault();
 
@@ -10,9 +13,9 @@ function Register() {
       "https://cardigan-coypu.cyclic.app/auth/signup",
       {
         email: e.target.email.value,
-        name:e.target.name.value,
-        password:e.target.password1.value,
-        password2:e.target.password2.value
+        name: e.target.name.value,
+        password: e.target.password1.value,
+        password2: e.target.password2.value,
       },
       {
         headers: {
@@ -22,9 +25,11 @@ function Register() {
     );
     response = await response.json();
     console.log(response);
-    if (response.status == 200)
-      window.location.replace("http://127.0.0.1:3000/login");
+    if (response.status == 200) navigate("/signin");
   };
+  useEffect(() => {
+    if (localStorage.getItem("auth")) navigate("/profile");
+  }, []);
   return (
     <div className={Style.Auth_form_container}>
       <form className={Style.Auth_form} onSubmit={signup}>
@@ -69,7 +74,7 @@ function Register() {
               required
             />
           </div>
-          
+
           <div className="d-grid gap-2 mt-3">
             <button type="submit" className="btn btn-dark">
               Submit

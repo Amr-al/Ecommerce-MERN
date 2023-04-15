@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import style from "./profile.module.css";
 import { decodeToken } from "react-jwt";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 function Profile() {
+  const navigate = useNavigate()
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("***********");
@@ -10,15 +13,19 @@ function Profile() {
   const [erorr, setErorr] = useState("");
   useEffect(() => {
     let token = localStorage.getItem("auth");
-    setName(decodeToken(token).name);
-    setEmail(decodeToken(token).email);
+    if(token){
+      setName(decodeToken(token).name);
+      setEmail(decodeToken(token).email);
+    }else{
+      window.location.replace('/signin')
+    }
   }, []);
   const update = async (e) => {
     e.preventDefault();
     setErorr("");
     let token = localStorage.getItem("auth");
     let id = decodeToken(token)._id;
-    let res = await fetch("http://127.0.0.1:8000/auth/update", {
+    let res = await fetch("https://cardigan-coypu.cyclic.app/auth/update", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
