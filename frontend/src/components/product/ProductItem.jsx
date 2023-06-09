@@ -15,7 +15,7 @@ const ProductItem = () => {
 },[])
 
 const getData = async () => {
-    let res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
+    let res = await axios.get(`https://ecom-nx2o.onrender.com/product/`);
     let prod = await res.data;
     prod = prod.filter((p) => p._id === _id);
     setProd3(prod[0]);

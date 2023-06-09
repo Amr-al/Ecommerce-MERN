@@ -55,8 +55,8 @@ const settings = {
       
     };
 
-const CatPage = ({image,anwa3Lebs,pagee}) => {
-
+const CatPage = ({image,anwa3Lebs,pagee}) => { 
+   console.log('xxxxx');
   const price = useRef();
 
 
@@ -84,7 +84,8 @@ const CatPage = ({image,anwa3Lebs,pagee}) => {
   
   useEffect(() => {
     const getProducts = async () => {
-      const res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
+      const res = await axios.get(`https://ecom-nx2o.onrender.com/product/`);
+      console.log(res);
       let tmp = res.data.filter((product) => product.category === pagee)
       setProducts(tmp);
       setFilteredProducts(tmp);

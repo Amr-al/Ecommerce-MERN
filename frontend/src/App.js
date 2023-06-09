@@ -17,7 +17,7 @@ function App() {
   
   useEffect(() => {
     let getProducts = async () => {
-      const res = await axios.get(`https://cardigan-coypu.cyclic.app/product/`);
+      const res = await axios.get(`https://ecom-nx2o.onrender.com/product/`);
       setProducts(res.data);
   //    console.log(res.data);
     };
@@ -34,13 +34,13 @@ function App() {
        <Routes>
 
           <Route exact path="/"  element={<Home products={products}/>}/>
-          <Route path="/men"  element={<Men />}/>
+          <Route path="/men"  element={<Men products={products} />}/>
           <Route path="/profile"  element={<Profile/>}/> 
           <Route path="/signin"  element={<Signin/>}/> 
           <Route path="/register"  element={<Register/>}/> 
-          <Route path="/women"  element={<Women />}/>   
-          <Route path="/accessories"  element={<Accessories />}/> 
-          <Route path="/collections"  element={<Collection />}/> 
+          <Route path="/women"  element={<Women products={products} />}/>   
+          <Route path="/accessories"  element={<Accessories products={products} />}/> 
+          <Route path="/collections"  element={<Collection products={products} />}/> 
           <Route path="/:_id"  element={<ProductItem />}/> 
         </Routes>
 
